@@ -10,12 +10,12 @@ Mopidy-WaitForInternet
     :target: https://pypi.python.org/pypi/Mopidy-WaitForInternet/
     :alt: Number of PyPI downloads
 
-.. image:: https://travis-ci.org/DavisNT/mopidy-waitforinternet.svg?branch=master
-    :target: https://travis-ci.org/DavisNT/mopidy-waitforinternet
-    :alt: Travis-CI build status
+.. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Python%20build/develop.svg?style=flat
+    :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/ci.yml
+    :alt: GitHub Actions build status
 
-.. image:: https://coveralls.io/repos/DavisNT/mopidy-waitforinternet/badge.svg
-    :target: https://coveralls.io/r/DavisNT/mopidy-waitforinternet
+.. image:: https://coveralls.io/repos/github/DavisNT/mopidy-waitforinternet/badge.svg
+    :target: https://coveralls.io/github/DavisNT/mopidy-waitforinternet
     :alt: Coveralls test coverage
 
 `Mopidy <http://www.mopidy.com/>`_ extension that waits (up to around 5 minutes) for an internet connection during early phase of Mopidy startup (before other extensions start to initialize).

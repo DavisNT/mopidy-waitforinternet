@@ -4,7 +4,6 @@ import time
 
 from mopidy import config, ext
 
-import pykka
 import requests
 
 __version__ = '0.0.1'
@@ -18,6 +17,7 @@ check_urls = [
 ]
 
 logger = logging.getLogger(__name__)
+
 
 class WaitForInternetExtension(ext.Extension):
     dist_name = 'Mopidy-WaitForInternet'
@@ -37,7 +37,7 @@ class WaitForInternetExtension(ext.Extension):
                 requests.get(check_urls[retries % len(check_urls)], timeout=10, allow_redirects=False)
                 verified = True
                 break
-            except:
+            except Exception:
                 time.sleep(1)
                 retries += 1
         logger.info('Internet connectivity verified: %s, retries: %d, time taken %.3fs', verified, retries, time.monotonic() - start)

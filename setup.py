@@ -24,6 +24,7 @@ setup(
     python_requires='>= 3.7',
     install_requires=[
         'setuptools',
+        'requests',
         'Mopidy >= 3.0',
     ],
     entry_points={

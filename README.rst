@@ -19,7 +19,7 @@ Mopidy-WaitForInternet
     :alt: Coveralls test coverage
 
 .. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Test%20connectivity%20check%20servers/develop.svg?style=flat&label=servers-test
-    :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/test-servers.yml
+    :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml
     :alt: Weekly build that tests connectivity check servers
 
 `Mopidy <http://www.mopidy.com/>`_ extension that waits (up to around 5 minutes) for an internet connection during early phase of Mopidy startup (before other extensions start to initialize).
@@ -75,7 +75,7 @@ Project resources
 - `Source code <https://github.com/DavisNT/mopidy-waitforinternet>`_
 - `Issue tracker <https://github.com/DavisNT/mopidy-waitforinternet/issues>`_
 - `Development branch tarball <https://github.com/DavisNT/mopidy-waitforinternet/archive/develop.tar.gz#egg=Mopidy-WaitForInternet-dev>`_
-- `Weekly build that tests URLs used by Mopidy-WaitForInternet for internet connectivity check <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/test-servers.yml>`_
+- `Weekly build that tests URLs used by Mopidy-WaitForInternet for internet connectivity check <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_
 
 
 Changelog

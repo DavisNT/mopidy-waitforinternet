@@ -8,7 +8,7 @@ import mopidy_waitforinternet
 
 class WaitForInternetExtensionTest(unittest.TestCase):
 
-    def test_get_default_config(self):
+    def test01_get_default_config(self):
         ext = mopidy_waitforinternet.WaitForInternetExtension()
 
         config = ext.get_default_config()
@@ -16,7 +16,7 @@ class WaitForInternetExtensionTest(unittest.TestCase):
         self.assertIn('[waitforinternet]', config)
         self.assertIn('enabled = true', config)
 
-    def test_setup_realrun(self):
+    def test02_setup_realrun(self):  # DO NOT MODIFY mopidy_waitforinternet.check_urls before this test!
         registry = mock.Mock()
 
         ext = mopidy_waitforinternet.WaitForInternetExtension()
@@ -29,7 +29,7 @@ class WaitForInternetExtensionTest(unittest.TestCase):
         self.assertGreater(t_stop - t_start, 0)
         self.assertLess(t_stop - t_start, 2)
 
-    def test_setup_transient_nameresolutionfailure(self):
+    def test03_setup_transient_nameresolutionfailure(self):
         registry = mock.Mock()
 
         mopidy_waitforinternet.check_urls = [
@@ -52,7 +52,7 @@ class WaitForInternetExtensionTest(unittest.TestCase):
         self.assertGreater(t_stop - t_start, 5)
         self.assertLess(t_stop - t_start, 7)
 
-    def test_setup_transient_tcpconnectionfailure(self):
+    def test03_setup_transient_tcpconnectionfailure(self):
         registry = mock.Mock()
 
         mopidy_waitforinternet.check_urls = [
@@ -75,7 +75,7 @@ class WaitForInternetExtensionTest(unittest.TestCase):
         self.assertGreater(t_stop - t_start, 5)
         self.assertLess(t_stop - t_start, 7)
 
-    def test_setup_permanent_nameresolutionfailure(self):
+    def test04_setup_permanent_nameresolutionfailure(self):
         registry = mock.Mock()
 
         mopidy_waitforinternet.check_urls = [

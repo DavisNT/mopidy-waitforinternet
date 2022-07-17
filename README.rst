@@ -14,7 +14,7 @@ Mopidy-WaitForInternet
     :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/ci.yml
     :alt: GitHub Actions build status
 
-.. image:: https://coveralls.io/repos/github/DavisNT/mopidy-waitforinternet/badge.svg
+.. image:: https://img.shields.io/coveralls/github/DavisNT/mopidy-waitforinternet.svg?style=flat
     :target: https://coveralls.io/github/DavisNT/mopidy-waitforinternet
     :alt: Coveralls test coverage
 
@@ -48,7 +48,12 @@ Usage
 
 This extension will delay initialization of other Mopidy extensions until an internet connection has been initialized (for up to around 5 minutes).
 
-This extension might be useful if other Mopidy extensions (e.g. extensions for online music streaming services) fail to initialize, because they try to connect to internet resources before machine running Mopidy has established an internet connection (e.g. connected to wifi).
+Mopidy-WaitForInternet might be useful if other Mopidy extensions (e.g. extensions for online music streaming services) fail to initialize, because they try to connect to internet resources before machine running Mopidy has established an internet connection (e.g. connected to wifi).
+
+Important internals
+=============
+
+Mopidy-WaitForInternet uses several different URLs (currently - requests to public `DoH <https://en.wikipedia.org/wiki/DNS_over_HTTPS>`_ servers) to check internet connectivity. As a future-proofing measure there is a `weekly servers-test build <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_ that verifies availability of these URLs.
 
 License
 =============
@@ -75,7 +80,7 @@ Project resources
 - `Source code <https://github.com/DavisNT/mopidy-waitforinternet>`_
 - `Issue tracker <https://github.com/DavisNT/mopidy-waitforinternet/issues>`_
 - `Development branch tarball <https://github.com/DavisNT/mopidy-waitforinternet/archive/develop.tar.gz#egg=Mopidy-WaitForInternet-dev>`_
-- `Weekly build that tests URLs used by Mopidy-WaitForInternet for internet connectivity check <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_
+- `Weekly servers-test build that tests URLs used by Mopidy-WaitForInternet for internet connectivity check <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_
 
 
 Changelog

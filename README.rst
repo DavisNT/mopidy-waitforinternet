@@ -92,7 +92,7 @@ v0.1.1
 - Fixed README formatting.
 - Initial release.
 
-v0.1.0
+v0.1.0 (UNRELEASED)
 ----------------------------------------
 
-- Unreleased.
+- Initial version.

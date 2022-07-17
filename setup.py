@@ -18,6 +18,7 @@ setup(
     author_email='python-apps@dm.id.lv',
     description='Mopidy extension that waits for internet connection during early startup.',
     long_description=open('README.rst').read(),
+    long_description_content_type='text/x-rst',
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
     include_package_data=True,

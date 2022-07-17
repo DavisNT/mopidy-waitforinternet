@@ -27,6 +27,9 @@ jobs:
           - name: 'Lint: flake8'
             python: '3.10'
             tox: flake8
+          - name: 'Lint: twine check'
+            python: '3.10'
+            tox: twine
 
     name: ${{ matrix.name }}
     runs-on: ubuntu-20.04

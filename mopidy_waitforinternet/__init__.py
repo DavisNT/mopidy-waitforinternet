@@ -6,7 +6,7 @@ from mopidy import config, ext
 
 import requests
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 check_urls = [
     'https://cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAACmNsb3VkZmxhcmUDY29tAAABAAE',

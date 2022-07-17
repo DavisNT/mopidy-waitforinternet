@@ -44,19 +44,19 @@ This extension has no configuration options in ``mopidy.conf`` apart from the de
 
 
 Usage
-=============
+=====
 
 This extension will delay initialization of other Mopidy extensions until an internet connection has been initialized (for up to around 5 minutes).
 
 Mopidy-WaitForInternet might be useful if other Mopidy extensions (e.g. extensions for online music streaming services) fail to initialize, because they try to connect to internet resources before machine running Mopidy has established an internet connection (e.g. connected to wifi).
 
 Important internals
-=============
+===================
 
 Mopidy-WaitForInternet uses several different URLs (currently - requests to public `DoH <https://en.wikipedia.org/wiki/DNS_over_HTTPS>`_ servers) to check internet connectivity. As a future-proofing measure there is a `weekly servers-test build <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_ that verifies availability of these URLs.
 
 License
-=============
+=======
 ::
 
    Copyright 2022 Davis Mosenkovs
@@ -86,7 +86,13 @@ Project resources
 Changelog
 =========
 
-v0.1.0
+v0.1.1
 ----------------------------------------
 
+- Fixed README formatting.
 - Initial release.
+
+v0.1.0 (UNRELEASED)
+----------------------------------------
+
+- Initial version.

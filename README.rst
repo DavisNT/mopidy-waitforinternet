@@ -3,11 +3,11 @@ Mopidy-WaitForInternet
 ****************************
 
 .. image:: https://img.shields.io/pypi/v/Mopidy-WaitForInternet.svg?style=flat
-    :target: https://pypi.python.org/pypi/Mopidy-WaitForInternet/
+    :target: https://pypi.org/project/Mopidy-WaitForInternet/
     :alt: Latest PyPI version
 
 .. image:: https://img.shields.io/pypi/dm/Mopidy-WaitForInternet.svg?style=flat
-    :target: https://pypi.python.org/pypi/Mopidy-WaitForInternet/
+    :target: https://pypi.org/project/Mopidy-WaitForInternet/
     :alt: Number of PyPI downloads
 
 .. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Python%20build/develop.svg?style=flat
@@ -42,6 +42,7 @@ This extension has no configuration options in ``mopidy.conf`` apart from the de
     # To temporary disable this extension without uninstalling it
     enabled = false
 
+Mopidy-WaitForInternet doesn't support proxy servers (it ignores proxy configuration in ``mopidy.conf``).
 
 Usage
 =====

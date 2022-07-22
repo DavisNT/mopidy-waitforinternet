@@ -1,5 +1,6 @@
 import time
 import unittest
+from datetime import datetime
 
 import pytest
 
@@ -21,6 +22,7 @@ class ConnectivityCheckServersTest(unittest.TestCase):
         for url in mopidy_waitforinternet.check_urls:
             resp = requests.get(url, timeout=2, allow_redirects=False)
             self.assertEqual(resp.status_code, 200)
+            self.assertLess(abs((datetime.utcnow() - datetime.strptime(resp.headers['Date'], '%a, %d %b %Y %H:%M:%S GMT')).total_seconds()), 3)
         t_stop = time.monotonic()
 
         self.assertLess(t_stop - t_start, len(mopidy_waitforinternet.check_urls))

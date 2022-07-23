@@ -1,3 +1,4 @@
+import socket
 import time
 import unittest
 
@@ -7,6 +8,9 @@ import mopidy_waitforinternet
 
 
 class WaitForInternetExtensionTest(unittest.TestCase):
+
+    def setUp(self):
+        self.backup_check_urls = mopidy_waitforinternet.check_urls
 
     def test01_get_default_config(self):
         ext = mopidy_waitforinternet.WaitForInternetExtension()
@@ -27,9 +31,21 @@ class WaitForInternetExtensionTest(unittest.TestCase):
 
         registry.add.assert_not_called()
         self.assertGreater(t_stop - t_start, 0)
-        self.assertLess(t_stop - t_start, 2)
+        self.assertLess(t_stop - t_start, 0.999)
 
     def test03_setup_transient_nameresolutionfailure(self):
+        for name in [
+            'nosuchhost.nosuchdomain1.arpa',
+            'nosuchhost.nosuchdomain2.arpa',
+            'nosuchhost.nosuchdomain3.arpa',
+            'nosuchhost.nosuchdomain4.arpa',
+            'nosuchhost.nosuchdomain5.arpa'
+        ]:
+            try:
+                socket.gethostbyname(name)
+            except Exception:
+                pass
+
         registry = mock.Mock()
 
         mopidy_waitforinternet.check_urls = [
@@ -95,3 +111,6 @@ class WaitForInternetExtensionTest(unittest.TestCase):
         registry.add.assert_not_called()
         self.assertGreaterEqual(t_stop - t_start, 300)
         self.assertLess(t_stop - t_start, 305)
+
+    def tearDown(self):
+        mopidy_waitforinternet.check_urls = self.backup_check_urls

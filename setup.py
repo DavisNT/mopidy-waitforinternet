@@ -31,6 +31,7 @@ setup(
     entry_points={
         'mopidy.ext': [
             'waitforinternet = mopidy_waitforinternet:WaitForInternetExtension',
+            'waitfortimesync = mopidy_waitfortimesync:WaitForTimeSyncExtension',
         ],
     },
     classifiers=[

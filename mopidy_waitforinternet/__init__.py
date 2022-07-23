@@ -1,6 +1,7 @@
 import logging
 import os
 import time
+from datetime import datetime
 
 from mopidy import config, ext
 
@@ -29,15 +30,29 @@ class WaitForInternetExtension(ext.Extension):
         return config.read(conf_file)
 
     def setup(self, registry):
+        self.__class__.wait_for_internet(False, logger)
+
+    def wait_for_internet(wait_for_timesync, logger):
         retries = 0
+        extramsg = ''
         verified = False
         start = time.monotonic()
         while time.monotonic() - start < 300:
             try:
-                requests.get(check_urls[retries % len(check_urls)], timeout=10, allow_redirects=False)
+                resp = requests.get(check_urls[retries % len(check_urls)], timeout=10, allow_redirects=False)
+                try:
+                    timediff = (datetime.utcnow() - datetime.strptime(resp.headers['Date'], '%a, %d %b %Y %H:%M:%S GMT')).total_seconds()
+                    if wait_for_timesync:
+                        if extramsg == '':
+                            extramsg = ', initial time offset: %ds' % timediff
+                        assert(abs(timediff) < 10)
+                    extramsg += ', time offset: %ds' % timediff
+                except Exception:
+                    if wait_for_timesync:
+                        raise
                 verified = True
                 break
             except Exception:
                 time.sleep(1)
                 retries += 1
-        logger.info('Internet connectivity verified: %s, retries: %d, time taken %.3fs', verified, retries, time.monotonic() - start)
+        logger.info('Internet connectivity verified: %s, retries: %d, time taken: %.3fs%s', verified, retries, time.monotonic() - start, extramsg)

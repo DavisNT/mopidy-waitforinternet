@@ -11,7 +11,7 @@ __version__ = '0.1.1'
 
 check_urls = [
     'https://cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAACmNsb3VkZmxhcmUDY29tAAABAAE',
-    'https://cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ',
+    'https://security.cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ',
     'https://dns.google/dns-query?dns=AAABAAABAAAAAAAABmdvb2dsZQNjb20AAAEAAQ',
     'https://dns.google/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ',
     'https://dns.quad9.net/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ'

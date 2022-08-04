@@ -45,7 +45,7 @@ class WaitForInternetExtension(ext.Extension):
                     if wait_for_timesync:
                         if extramsg == '':
                             extramsg = ', initial time offset: %ds' % timediff
-                        assert(abs(timediff) < 10)
+                        assert abs(timediff) < 10
                     extramsg += ', time offset: %ds' % timediff
                 except Exception:
                     if wait_for_timesync:

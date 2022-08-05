@@ -3,11 +3,11 @@ Mopidy-WaitForInternet
 ****************************
 
 .. image:: https://img.shields.io/pypi/v/Mopidy-WaitForInternet.svg?style=flat
-    :target: https://pypi.python.org/pypi/Mopidy-WaitForInternet/
+    :target: https://pypi.org/project/Mopidy-WaitForInternet/
     :alt: Latest PyPI version
 
 .. image:: https://img.shields.io/pypi/dm/Mopidy-WaitForInternet.svg?style=flat
-    :target: https://pypi.python.org/pypi/Mopidy-WaitForInternet/
+    :target: https://pypi.org/project/Mopidy-WaitForInternet/
     :alt: Number of PyPI downloads
 
 .. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Python%20build/develop.svg?style=flat
@@ -22,7 +22,7 @@ Mopidy-WaitForInternet
     :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml
     :alt: Weekly build that tests connectivity check servers
 
-`Mopidy <http://www.mopidy.com/>`_ extension that waits (up to around 5 minutes) for an internet connection during early phase of Mopidy startup (before other extensions start to initialize).
+`Mopidy <http://www.mopidy.com/>`_ extensions that wait (up to around 5 minutes) for an internet connection (and optionally for time synchronization) during early phase of Mopidy startup (before other extensions start to initialize).
 
 
 Installation
@@ -36,24 +36,56 @@ Install by running::
 Configuration
 =============
 
-This extension has no configuration options in ``mopidy.conf`` apart from the default ``enabled`` setting::
+This package consists of two Mopidy extensions - ``mopidy_waitforinternet`` (enabled by default) that waits **only** for internet connection and ``mopidy_waitfortimesync`` (disabled by default) that waits for internet connection **and** time synchronization. They have no configuration options in ``mopidy.conf`` apart from the default ``enabled`` setting::
 
+    # To enable waiting for internet connection and time synchronization
     [waitforinternet]
-    # To temporary disable this extension without uninstalling it
     enabled = false
 
+    [waitfortimesync]
+    enabled = true
+
+These extensions don't support proxy servers (they ignore proxy configuration in ``mopidy.conf``).
 
 Usage
 =====
 
-This extension will delay initialization of other Mopidy extensions until an internet connection has been initialized (for up to around 5 minutes).
+Mopidy-WaitForInternet might be useful if other Mopidy extensions (e.g. extensions for online music streaming services) fail to initialize, because they try to connect to internet resources before machine running Mopidy has established an internet connection (e.g. connected to wifi) or synchronized its clock.
 
-Mopidy-WaitForInternet might be useful if other Mopidy extensions (e.g. extensions for online music streaming services) fail to initialize, because they try to connect to internet resources before machine running Mopidy has established an internet connection (e.g. connected to wifi).
+``mopidy_waitforinternet`` will delay initialization of other Mopidy extensions until an internet connection has been established (the extension will wait for up to around 5 minutes). It's recommended if:
+
+* the computer running Mopidy has a `real-time clock <https://en.wikipedia.org/wiki/Real-time_clock>`_
+
+* all of the below:
+
+  * it is important to minimize Mopidy startup time
+
+  * it is acceptable if other Mopidy extensions occasionally (once in several months or so) fail to initialize due to inaccurate date/time
+
+  * the computer does not have a real-time clock
+
+  * the computer/OS saves the time between reboots (like Raspberry Pi OS does)
+
+  * the computer is used often
+
+``mopidy_waitfortimesync`` will delay initialization of other Mopidy extensions until an internet connection has been established and computer's clock has been synchronized (the extension will wait for up to around 5 minutes). It's recommended if:
+
+* prolonged Mopidy startup time is not a problem
+
+* it is important to minimize initialization failures of other Mopidy extensions
+
+* the computer running Mopidy does not have a real-time clock and is used rarely
+
+Local time (computer's clock) is somewhat important for connectivity. Most internet services use HTTPS and HTTPS has certificates that are valid for a specific time period (usually 3 or 13 months). To connect to an HTTPS resource, computer's clock must be within the validity period of the HTTPS certificate used by that particular resource. Some computers (e.g. Raspberry Pi) don't have `real-time clocks <https://en.wikipedia.org/wiki/Real-time_clock>`_ and synchronize their clocks from the internet (via `NTP <https://en.wikipedia.org/wiki/Network_Time_Protocol>`_). In most cases, until the clock of such computer is synchronized it is set to the time saved at previous shutdown, for some computers the clock is set to a constant time/date (e.g. midnight January 1, 2020). As ``mopidy_waitforinternet`` uses HTTPS, it will detect internet connectivity only when computer's clock is within the validity period of the HTTPS certificate of at least one of the URLs used by ``mopidy_waitforinternet``. This guarantees that computer's clock has accuracy of a year or so, however this does not guarantee that computer's clock is accurate enough to allow connectivity (to other HTTPS resources) required by other Mopidy extensions.
+
+Both extensions log information about the introduced startup delay.
 
 Important internals
 ===================
 
 Mopidy-WaitForInternet uses several different URLs (currently - requests to public `DoH <https://en.wikipedia.org/wiki/DNS_over_HTTPS>`_ servers) to check internet connectivity. As a future-proofing measure there is a `weekly servers-test build <https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml>`_ that verifies availability of these URLs.
+
+Time synchronization is checked by comparing local time with the ``Date`` response header of HTTP requests to the internet connectivity check URLs (difference of less than 10 seconds is considered synchronized time).
 
 License
 =======
@@ -85,6 +117,12 @@ Project resources
 
 Changelog
 =========
+
+v0.2.0
+----------------------------------------
+
+- Added second extension (mopidy_waitfortimesync).
+- Minor improvements.
 
 v0.1.1
 ----------------------------------------

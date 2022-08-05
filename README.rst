@@ -118,6 +118,12 @@ Project resources
 Changelog
 =========
 
+v0.2.0
+----------------------------------------
+
+- Added second extension (mopidy_waitfortimesync).
+- Minor improvements.
+
 v0.1.1
 ----------------------------------------
 

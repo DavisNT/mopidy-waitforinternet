@@ -10,7 +10,7 @@ Mopidy-WaitForInternet
     :target: https://pypi.org/project/Mopidy-WaitForInternet/
     :alt: Number of PyPI downloads
 
-.. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Python%20build/develop.svg?style=flat
+.. image:: https://img.shields.io/github/actions/workflow/status/DavisNT/mopidy-waitforinternet/ci.yml?branch=develop&style=flat
     :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/ci.yml
     :alt: GitHub Actions build status
 
@@ -18,7 +18,7 @@ Mopidy-WaitForInternet
     :target: https://coveralls.io/github/DavisNT/mopidy-waitforinternet
     :alt: Coveralls test coverage
 
-.. image:: https://img.shields.io/github/workflow/status/DavisNT/mopidy-waitforinternet/Test%20connectivity%20check%20servers/develop.svg?style=flat&label=servers-test
+.. image:: https://img.shields.io/github/actions/workflow/status/DavisNT/mopidy-waitforinternet/servers-test.yml?branch=develop&style=flat&label=servers-test
     :target: https://github.com/DavisNT/mopidy-waitforinternet/actions/workflows/servers-test.yml
     :alt: Weekly build that tests connectivity check servers
 

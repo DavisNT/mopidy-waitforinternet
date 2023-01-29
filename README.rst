@@ -118,6 +118,11 @@ Project resources
 Changelog
 =========
 
+v0.2.1
+----------------------------------------
+
+- Fixed build badges (including servers-test).
+
 v0.2.0
 ----------------------------------------
 

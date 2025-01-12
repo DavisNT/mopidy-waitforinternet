@@ -8,9 +8,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: 'Test: Python 3.7'
-            python: '3.7'
-            tox: py37
           - name: 'Test: Python 3.8'
             python: '3.8'
             tox: py38
@@ -20,19 +17,25 @@ jobs:
           - name: 'Test: Python 3.10'
             python: '3.10'
             tox: py310
+          - name: 'Test: Python 3.11'
+            python: '3.11'
+            tox: py311
+          - name: 'Test: Python 3.12'
+            python: '3.12'
+            tox: py312
             coverage-upload: true
           - name: 'Test: Python latest 3.x'
             python: '3.x'
             tox: py3x
           - name: 'Lint: flake8'
-            python: '3.10'
+            python: '3.12'
             tox: flake8
           - name: 'Lint: twine check'
-            python: '3.10'
+            python: '3.12'
             tox: twine
 
     name: ${{ matrix.name }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     container: ghcr.io/mopidy/ci:latest
 
     steps:

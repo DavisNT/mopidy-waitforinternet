@@ -7,14 +7,14 @@ from mopidy import config, ext
 
 import requests
 
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 check_urls = [
     'https://cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAACmNsb3VkZmxhcmUDY29tAAABAAE',
     'https://security.cloudflare-dns.com/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ',
     'https://dns.google/dns-query?dns=AAABAAABAAAAAAAABmdvb2dsZQNjb20AAAEAAQ',
     'https://dns.google/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ',
-    'https://dns.quad9.net/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ'
+    'https://unfiltered.adguard-dns.com/dns-query?dns=AAABAAABAAAAAAAABm1vcGlkeQNjb20AAAEAAQ'
 ]
 
 logger = logging.getLogger(__name__)

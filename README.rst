@@ -91,7 +91,7 @@ License
 =======
 ::
 
-   Copyright 2022 Davis Mosenkovs
+   Copyright 2022-2025 Davis Mosenkovs
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -117,6 +117,11 @@ Project resources
 
 Changelog
 =========
+
+v0.2.2
+----------------------------------------
+
+- Updated connectivity check URLs (switched from Quad9 to AdGuard).
 
 v0.2.1
 ----------------------------------------

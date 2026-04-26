@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install required OS packages
+        run: sudo apt install -y libcairo2-dev libgirepository-2.0-dev
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
